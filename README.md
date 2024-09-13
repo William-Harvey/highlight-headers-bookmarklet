@@ -40,5 +40,5 @@ This bookmarklet highlights all `h1` through `h6` tags on a webpage, outlining t
 ### Bookmarklet Code (Fetching External Script)
 
 ```javascript
-javascript:(function(){var s=document.createElement('script');s.src='https://raw.githubusercontent.com/William-Harvey/highlight-headers-bookmarklet/main/highlight-headers.js';document.body.appendChild(s);})();
+javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/William-Harvey/highlight-headers-bookmarklet/highlight-headers.js';document.body.appendChild(s);})();
 
