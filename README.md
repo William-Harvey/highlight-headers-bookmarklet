@@ -10,6 +10,9 @@ This bookmarklet highlights all `h1` through `h6` tags on a webpage, outlining t
 4. Give the bookmark a name, like **Highlight Headers**.
 5. Paste the bookmarklet code in the **URL** field.
 6. Save the bookmark.
+7. Go to the the webpage that you want to test.
+8. Click the new bookmark named **Highlight Headers**
+9. You should now see the headers labelled.
 
 ### Bookmarklet Code
 
