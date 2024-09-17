@@ -64,30 +64,6 @@ javascript:(function(){
         }
     });
 
-    // Handle semantic sections (section and article) and check for valid local header structure
-    document.querySelectorAll('section, article').forEach(sec => {
-        let lastHeadingLevel = 0;
-        sec.querySelectorAll('h1,h2,h3,h4,h5,h6').forEach(h => {
-            const currentLevel = parseInt(h.tagName.slice(1));
-            if (currentLevel > lastHeadingLevel + 1) {
-                const warning = document.createElement('span');
-                warning.textContent = `Warning: Skipped heading level. Expected <h${lastHeadingLevel + 1}> but found <h${currentLevel}>.`;
-                h.appendChild(warning);
-                h.style.outline = '2px solid orange';
-            }
-            lastHeadingLevel = currentLevel;
-        });
-
-        // Warn if section has no headers
-        const firstHeader = sec.querySelector('h1, h2, h3, h4, h5, h6');
-        if (!firstHeader) {
-            const warning = document.createElement('div');
-            warning.textContent = 'Warning: This section has no heading!';
-            sec.prepend(warning);
-            sec.style.outline = '2px solid red';
-        }
-    });
-
     // Create 'View Header Formation' button
     const viewHeadersButton = document.createElement('button');
     viewHeadersButton.textContent = 'View Header Formation';
@@ -111,12 +87,14 @@ javascript:(function(){
 
         // List all headers (h1 to h6)
         document.querySelectorAll('h1,h2,h3,h4,h5,h6').forEach(h => {
-            const tagName = h.tagName.toLowerCase();
+            const tagName = h.tagName.toUpperCase();
             let headerText = h.textContent.trim();
 
-            // If header contains an image, show 'image'
-            if (h.querySelector('img')) {
-                headerText = 'image';
+            // If header contains an image, show the image filename
+            const img = h.querySelector('img');
+            if (img) {
+                const imgSrc = img.getAttribute('src');
+                headerText = imgSrc ? imgSrc.split('/').pop() : 'image';
             }
 
             const reportLine = document.createElement('div');
@@ -149,5 +127,4 @@ javascript:(function(){
     };
 
     document.body.appendChild(cleanupButton);
-
 })();
