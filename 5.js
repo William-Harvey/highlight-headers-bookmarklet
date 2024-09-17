@@ -186,4 +186,12 @@ javascript:(function(){
             moveAt(e.pageX, e.pageY);
         }
 
-        document.addEventListener('mousemove', on
+        document.addEventListener('mousemove', onMouseMove);
+
+        el.onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            el.onmouseup = null;
+        };
+    }
+
+})();
