@@ -85,7 +85,7 @@ javascript:(function(){
         headerReport.style.zIndex = '9998';
         headerReport.style.overflow = 'auto'; // Add scrolling
         headerReport.style.maxHeight = '70vh'; // Set max height to enable scrolling
-        headerReport.innerHTML = '<h3>Header Structure:</h3>';
+        headerReport.innerHTML = '<h3>Header Structure2:</h3>';
 
         // Close button to remove the report
         const closeButton = document.createElement('button');
