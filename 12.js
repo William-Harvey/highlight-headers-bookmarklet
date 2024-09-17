@@ -123,9 +123,9 @@ javascript:(function(){
         closeButton.style.cursor = 'pointer';
         headerReport.appendChild(closeButton);
 
-        // Add drag handle using SVG (Move Cursor Icon)
+        // Add drag handle using SVG (Back of hand fist)
         const dragHandle = document.createElement('div');
-        dragHandle.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="black" d="M11.994 6.25 9.445 3.7A1 1 0 0 0 8.03 5.114l2.55 2.549H9.749a.5.5 0 0 0-.5.5v1.548L6.7 8.03A1 1 0 1 0 5.114 9.446l2.55 2.55H6.25a.5.5 0 0 0-.5.5v1.548L3.7 11.996a1 1 0 0 0-1.414 1.414l2.55 2.549H5.25a.5.5 0 0 0 .5.5v1.549l-2.549-2.55A1 1 0 0 0 5.114 18.03l2.549 2.55V18.25a.5.5 0 0 0 .5-.5v-1.549L9.445 20.3a1 1 0 0 0 1.414-1.414l-2.55-2.549v1.55a.5.5 0 0 0 .5.5h1.549l-2.549 2.55A1 1 0 0 0 18.03 18.03l2.55-2.55v1.55a.5.5 0 0 0 .5-.5v-1.549L21.3 18.03a1 1 0 1 0-1.414-1.414l-2.549-2.549v1.55a.5.5 0 0 0-.5-.5h-1.549L20.3 15.445a1 1 0 1 0-1.414-1.414l-2.549-2.549h1.55a.5.5 0 0 0-.5-.5h-1.55L15.445 9.445a1 1 0 1 0-1.414-1.414l-2.55 2.55H14.25a.5.5 0 0 0-.5-.5V8.03L11.995 6.25Z"/></svg>`;
+        dragHandle.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="black" d="M9 3a3 3 0 0 1 3 3v3h2v-2.667A2.333 2.333 0 0 1 16.333 4h.334A2.333 2.333 0 0 1 19 6.333V11h1.333A2.667 2.667 0 0 1 23 13.667v1.666A2.667 2.667 0 0 1 20.333 18H8.667a4.667 4.667 0 0 1-4.645-4.304L4 13.667v-6A2.667 2.667 0 0 1 6.667 5H9Zm3-1a4 4 0 0 0-4 4H6.667a3.667 3.667 0 0 0-3.665 3.439L3 7.667a3.667 3.667 0 0 0 3.667 3.667h9.666a4 4 0 0 0 4-4V6.333A3.333 3.333 0 0 0 16.667 3H16a4 4 0 0 0-4-1Z"/></svg>`;
         dragHandle.style.cursor = 'move';
         dragHandle.style.position = 'absolute';
         dragHandle.style.right = '40px';  // Padding of 30px between close and drag handle
