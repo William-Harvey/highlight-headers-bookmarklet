@@ -85,6 +85,10 @@ javascript:(function(){
         headerReport.style.zIndex = '9998';
         headerReport.innerHTML = '<h3>Header Structure:</h3>';
 
+        // Temporarily hide the diagnostic labels before generating the report
+        const spans = document.querySelectorAll('span');
+        spans.forEach(span => span.style.display = 'none');
+
         // List all headers (h1 to h6)
         document.querySelectorAll('h1,h2,h3,h4,h5,h6').forEach(h => {
             const tagName = h.tagName.toUpperCase();
@@ -102,6 +106,9 @@ javascript:(function(){
             reportLine.innerHTML = `<strong>${tagName}</strong>: ${headerText}`;
             headerReport.appendChild(reportLine);
         });
+
+        // Re-display the diagnostic labels after generating the report
+        spans.forEach(span => span.style.display = 'inline');
 
         document.body.appendChild(headerReport);
     };
