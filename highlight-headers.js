@@ -83,7 +83,24 @@ javascript:(function(){
         headerReport.style.top = '100px';
         headerReport.style.left = '10px';
         headerReport.style.zIndex = '9998';
-        headerReport.innerHTML = '<h3>Header Structure2:</h3>';
+        headerReport.style.overflow = 'auto'; // Add scrolling
+        headerReport.style.maxHeight = '70vh'; // Set max height to enable scrolling
+        headerReport.innerHTML = '<h3>Header Structure:</h3>';
+
+        // Close button to remove the report
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'X';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '5px';
+        closeButton.style.right = '10px';
+        closeButton.style.backgroundColor = 'red';
+        closeButton.style.color = 'white';
+        closeButton.style.border = 'none';
+        closeButton.style.cursor = 'pointer';
+        closeButton.onclick = function() {
+            headerReport.remove();
+        };
+        headerReport.appendChild(closeButton);
 
         // Temporarily hide the diagnostic labels before generating the report
         const spans = document.querySelectorAll('span');
@@ -111,6 +128,11 @@ javascript:(function(){
         spans.forEach(span => span.style.display = 'inline');
 
         document.body.appendChild(headerReport);
+
+        // Make the report draggable
+        headerReport.onmousedown = function(event) {
+            dragElement(headerReport, event);
+        };
     };
 
     document.body.appendChild(viewHeadersButton);
@@ -134,4 +156,32 @@ javascript:(function(){
     };
 
     document.body.appendChild(cleanupButton);
+
+    // Function to make the report draggable
+    function dragElement(el, event) {
+        let shiftX = event.clientX - el.getBoundingClientRect().left;
+        let shiftY = event.clientY - el.getBoundingClientRect().top;
+
+        el.style.position = 'absolute';
+        el.style.zIndex = 1000;
+
+        function moveAt(pageX, pageY) {
+            el.style.left = pageX - shiftX + 'px';
+            el.style.top = pageY - shiftY + 'px';
+        }
+
+        moveAt(event.pageX, event.pageY);
+
+        function onMouseMove(e) {
+            moveAt(e.pageX, e.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        el.onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            el.onmouseup = null;
+        };
+    }
+
 })();
