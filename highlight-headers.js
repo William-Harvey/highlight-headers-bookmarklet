@@ -83,7 +83,7 @@ javascript:(function(){
         headerReport.style.top = '100px';
         headerReport.style.left = '10px';
         headerReport.style.zIndex = '9998';
-        headerReport.innerHTML = '<h3>Header Structure:</h3>';
+        headerReport.innerHTML = '<h3>Header Structure2:</h3>';
 
         // Temporarily hide the diagnostic labels before generating the report
         const spans = document.querySelectorAll('span');
