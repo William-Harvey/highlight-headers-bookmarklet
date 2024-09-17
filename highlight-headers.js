@@ -102,13 +102,14 @@ javascript:(function(){
         };
         headerReport.appendChild(closeButton);
 
-        // Temporarily hide the diagnostic labels before generating the report
-        const spans = document.querySelectorAll('span');
-        spans.forEach(span => span.style.display = 'none');
-
         // List all headers (h1 to h6)
         document.querySelectorAll('h1,h2,h3,h4,h5,h6').forEach(h => {
             const tagName = h.tagName.toUpperCase();
+
+            // Temporarily remove suggestion spans to get clean text
+            const spans = h.querySelectorAll('span');
+            spans.forEach(span => span.style.display = 'none');
+
             let headerText = h.textContent.trim();
 
             // If header contains an image, show the image filename
@@ -122,10 +123,10 @@ javascript:(function(){
             reportLine.style.marginBottom = '5px';
             reportLine.innerHTML = `<strong>${tagName}</strong>: ${headerText}`;
             headerReport.appendChild(reportLine);
-        });
 
-        // Re-display the diagnostic labels after generating the report
-        spans.forEach(span => span.style.display = 'inline');
+            // Re-display the hidden spans after getting clean text
+            spans.forEach(span => span.style.display = 'inline');
+        });
 
         document.body.appendChild(headerReport);
 
