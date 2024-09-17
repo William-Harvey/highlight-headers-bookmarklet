@@ -49,23 +49,16 @@ javascript:(function(){
             return;
         }
 
-        // Handle skipped levels or backward skips
-        if (!h1Found && currentLevel !== 1) {
-            suggestion.textContent = `Suggestion: Use <h1> first`;
-            h.style.outline = '2px solid blue';
-            h.appendChild(suggestion);
-        } else if (h1Found) {
-            if (currentLevel - lastHeadingLevel > 1) {
+        // Handle skipping forward (disallowed) and skipping backward (allowed)
+        if (h1Found) {
+            if (currentLevel > lastHeadingLevel + 1) {
+                // Skipping forward is disallowed (e.g., h2 to h4 without an h3)
                 const suggestedHeading = `h${lastHeadingLevel + 1}`;
                 suggestion.textContent = `Suggestion: Should be <${suggestedHeading}> to avoid skipping levels.`;
                 h.style.outline = '2px solid orange';
                 h.appendChild(suggestion);
-            } else if (currentLevel + 1 < lastHeadingLevel) {
-                suggestion.textContent = `Warning: Cannot skip back more than one level!`;
-                h.style.outline = '2px solid red';
-                h.appendChild(suggestion);
             } else {
-                h.style.outline = '2px solid red';
+                h.style.outline = '2px solid red'; // Valid header with no skipping
             }
             lastHeadingLevel = currentLevel;
         }
